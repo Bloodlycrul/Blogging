@@ -8,10 +8,10 @@ const useFetch = () => {
   const dispatch = useDispatch ();
 
   useEffect(() => {
-    fetch("http://hemankenterprises.online/backend/post")
+    fetch("http://localhost:3000/post")
       .then((response) => {
         if (!response.ok) {
-          throw new Error("Network response was not ok", response)
+          throw new Error("Network response was not ok", response);
         }
         return response.json();
       })

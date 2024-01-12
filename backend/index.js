@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const port = `http://hemankenterprises.online/backend/`;
+const port = 3000;
 const connection = require("./database/connection");
 const { postModel, user } = require("./database/Schema/post");
 const cors = require("cors");

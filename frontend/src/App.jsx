@@ -4,24 +4,21 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import Error from "./pages/Error";
 import Footer from "./components/Footer";
-
 import { lazy, Suspense } from "react";
 const BlogPage = lazy(() => import("./components/BlogPage"));
 const AboutUS = lazy(() => import("./pages/AboutUs"));
 const PostArticle = lazy(() => import("./pages/PostArticle"));
 const NewsLetterPage = lazy(() => import("./pages/NewsLetterPage"));
 const SignLogin = lazy(() => import("./pages/SignLogin"));
+import useFetch from "./utils/UseFetch";
 
 function App() {
-  let loading;
+  let loading = useFetch();
 
-  if (loading) {
-    console.log("I am from loading ", loading);
-    return <div>Loading....</div>;
-  } else {
-    console.log("I am from else", loading);
-    // eslint-disable-next-line
-    // loading = useFetch();
+  
+
+  if(loading) {
+    return <h1>Loading .....</h1>
   }
 
   return (
