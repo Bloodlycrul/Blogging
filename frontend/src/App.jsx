@@ -6,7 +6,6 @@ import Error from "./pages/Error";
 import Footer from "./components/Footer";
 import useFetch from "./utils/UseFetch";
 import { lazy, Suspense } from "react";
-// import BlogPage from "./components/BlogPage";
 const BlogPage = lazy(() => import("./components/BlogPage"));
 const AboutUS = lazy(() => import("./pages/AboutUs"));
 const PostArticle = lazy(() => import("./pages/PostArticle"));
