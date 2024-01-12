@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import Error from "./pages/Error";
 import Footer from "./components/Footer";
-import useFetch from "./utils/UseFetch";
+import useFetch from "./utils/UseFetch.js";
 import { lazy, Suspense } from "react";
 const BlogPage = lazy(() => import("./components/BlogPage"));
 const AboutUS = lazy(() => import("./pages/AboutUs"));
