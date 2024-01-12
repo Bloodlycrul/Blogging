@@ -1,0 +1,14 @@
+# Allow all crawlers access to all content
+User-agent: *
+Disallow:
+
+# Disallow a specific crawler from a specific folder
+# User-agent: BadBot
+# Disallow: /private/
+
+# Disallow all crawlers from a specific folder
+# Disallow: /private/
+
+# Allow a specific crawler to a specific folder
+# User-agent: GoodBot
+# Allow: /public/

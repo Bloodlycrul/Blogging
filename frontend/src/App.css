@@ -1,0 +1,35 @@
+html{
+  background-color: #090D1F;
+}
+
+.flex-view-container .flex-image-view{
+  width: 1300px;
+  height: auto;
+  object-fit: cover;
+}
+
+.form-input{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-input input{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding:  20px 0 20px 0;
+  margin: 10px;
+  width: 300px;
+  border-bottom: 1px solid white;
+  background-color: transparent;
+
+}
+
+.form-input input:focus{
+  outline: none;
+}
+
+.delay{
+  font-display: swap
+}
