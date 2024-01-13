@@ -22,7 +22,7 @@ const Header = () => {
         <Link to={'/'}><h1 className="font-[600] text-[20px]">Gaurav Rana</h1></Link>
         <div className="font-[400] text-[20px]" >
         <Link to={Home} className="px-[15px]" >Projects</Link>
-        <Link to={Home} className="px-[15px]" >Blog</Link>
+        <Link to={'/blogs'} className="px-[15px]" >Blog</Link>
         <Link to={'/about'} className="px-[15px]" >About</Link>
         <Link to={'/newsletter'} className="px-[15px]" >Newsletter</Link>
         

@@ -11,15 +11,11 @@ const PostArticle = lazy(() => import("./pages/PostArticle"));
 const NewsLetterPage = lazy(() => import("./pages/NewsLetterPage"));
 const SignLogin = lazy(() => import("./pages/SignLogin"));
 import useFetch from "./utils/UseFetch";
+import ShowAllBlog from "./components/ShowAllBlog";
 
 function App() {
-  let loading = useFetch();
-
-  
-
-  if(loading) {
-    return <h1>Loading .....</h1>
-  }
+  useFetch();
+  console.log("Welcome");
 
   return (
     <>
@@ -30,12 +26,33 @@ function App() {
               <Header />
               <Routes>
                 <Route path="/" element={<Home />} errorElement={<Error />} />
-                <Route path="/blog/:id" element={<BlogPage />} errorElement={<Error />} />
+                <Route
+                  path="/blog/:id"
+                  element={<BlogPage />}
+                  errorElement={<Error />}
+                />
                 <Route path="/*" element={<Error />} />
-                <Route path="/uploadPost" element={<PostArticle />} errorElement={<Error />} />
-                <Route path="/signIn" element={<SignLogin />} errorElement={<Error />} />
-                <Route path="/newsletter" element={<NewsLetterPage />} errorElement={<Error />} />
-                <Route path="/about" element={<AboutUS />} errorElement={<Error />} />
+                <Route
+                  path="/uploadPost"
+                  element={<PostArticle />}
+                  errorElement={<Error />}
+                />
+                <Route
+                  path="/signIn"
+                  element={<SignLogin />}
+                  errorElement={<Error />}
+                />
+                <Route
+                  path="/newsletter"
+                  element={<NewsLetterPage />}
+                  errorElement={<Error />}
+                />
+                <Route path="/blogs" element={<ShowAllBlog />} />
+                <Route
+                  path="/about"
+                  element={<AboutUS />}
+                  errorElement={<Error />}
+                />
               </Routes>
             </Router>
           </Suspense>
