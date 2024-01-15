@@ -3,8 +3,8 @@ import { fetchItems } from "./postSlice";
 import { useDispatch } from "react-redux";
 
 
-const useFetch = () => {
-  const [loading, setLoading] = useState();
+const UseFetch = () => {
+  const [loading, setLoading] = useState(false);
   const dispatch = useDispatch ();
 
   useEffect(() => {
@@ -17,7 +17,7 @@ const useFetch = () => {
       })
       .then((data) => {
         dispatch(fetchItems(data.detail));
-        setLoading(false);
+        setLoading(true);
       })
       .catch((error) => {
         setLoading(false);
@@ -29,4 +29,4 @@ const useFetch = () => {
 
 }
 
-export default useFetch
+export default UseFetch

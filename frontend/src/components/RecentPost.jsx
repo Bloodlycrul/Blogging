@@ -7,6 +7,12 @@ import { useSelector } from "react-redux";
 const RecentPost = () => {
   const postsItems = useSelector((store) => store.post.posts);
 
+  if(postsItems.length === 0) {
+    return <>
+      <h1>Item Is loading .....</h1>
+    </>
+  }
+
   return (
     <div className="w-full p-[32] mt-[60px]">
       <h1 className="text-[24px] font-Inter font-[600] mb-[32px] ">

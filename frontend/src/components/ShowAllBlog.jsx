@@ -9,6 +9,7 @@ const ShowAllBlog = () => {
   const allBlog1 = useSelector((store) => store.post.posts);
   const allBlog = [...allBlog1].reverse().slice(0, blogLength);
 
+
   const handlePaginations = ()=>{
     let totalLength = allBlog1.length
     console.log(totalLength)
@@ -36,7 +37,7 @@ const ShowAllBlog = () => {
           })}
       </div>
 
-      <button onClick={handlePaginations} className="border px-[20px] py-[10px] rounded-lg text-center m-auto flex justify-center my-[100px]">Load More</button>
+      <button onClick={handlePaginations} className={`border px-[20px] py-[10px] rounded-lg text-center m-auto flex justify-center my-[100px] ${allBlog1.length === allBlog.length ? 'hidden' : ''} `}>Load More</button>
     </div>
   );
 };

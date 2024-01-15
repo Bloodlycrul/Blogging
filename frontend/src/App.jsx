@@ -10,12 +10,9 @@ const AboutUS = lazy(() => import("./pages/AboutUs"));
 const PostArticle = lazy(() => import("./pages/PostArticle"));
 const NewsLetterPage = lazy(() => import("./pages/NewsLetterPage"));
 const SignLogin = lazy(() => import("./pages/SignLogin"));
-import useFetch from "./utils/UseFetch";
 import ShowAllBlog from "./components/ShowAllBlog";
 
 function App() {
-  useFetch();
-  console.log("Welcome");
 
   return (
     <>

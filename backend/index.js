@@ -94,7 +94,7 @@ app.post("/signUp", async (req, res) => {
 
 app.use(function (err, req, res) {
   console.log(err.message);
-  res.status(err.status || 500).json({ error: err.message });
+  res?.status(500).json({ error: err.message });
   res.end();
 });
 

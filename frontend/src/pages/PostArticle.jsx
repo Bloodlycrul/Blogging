@@ -1,33 +1,47 @@
 import { useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const PostArticle = () => {
   const title = useRef(null);
   const description = useRef(null);
   const imageUrl = useRef(null);
   const [success, setSuccess] = useState(false);
+  const navigate = useNavigate()
 
   const uploadArticle = async () => {
-    let userTitle = title.current.value;
-    let userDescription = description.current.value;
-    let userImageUrl = imageUrl.current.value;
+    try {
+      let userTitle = title.current.value;
+      let userDescription = description.current.value;
+      let userImageUrl = imageUrl.current.value;
 
-    const uploadArticle = await fetch("http://localhost:3000/post", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        title: userTitle,
-        description: userDescription,
-        imageUrl: userImageUrl,
-      }),
-    });
+      if (userTitle && userDescription && userImageUrl) {
+        const uploadArticle = await fetch("http://localhost:3000/post", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            title: userTitle,
+            description: userDescription,
+            imageUrl: userImageUrl,
+          }),
+        });
+        if (!uploadArticle) {
+          throw new Error(`HTTPS error ! Status: ${uploadArticle.status}`);
+        }
+        navigate('/')
+        setSuccess(true);
+        return uploadArticle.json();
+      } else {
+        setSuccess(false);
+      }
 
-    if (!uploadArticle) {
-      throw new Error(`HTTPS error ! Status: ${uploadArticle.status}`);
+    } catch (error) {
+      console.log(error);
+      resizeBy.status(500).json({
+        message: "Please fill out all the required fields",
+      });
     }
-    setSuccess(true);
-    return uploadArticle.json();
   };
 
   return (
@@ -60,7 +74,11 @@ const PostArticle = () => {
           Submit
         </button>
         <div className="mt-[30px] text-white">
-          {success ? <h1>Uploaded Sucessfull</h1> : null}
+          {success ? (
+            <h1>Uploaded Sucessfull</h1>
+          ) : (
+            <h1>Please Fill All the required field</h1>
+          )}
         </div>
       </div>
     </>
@@ -68,3 +86,13 @@ const PostArticle = () => {
 };
 
 export default PostArticle;
+
+
+
+
+
+/*
+
+
+
+*/
