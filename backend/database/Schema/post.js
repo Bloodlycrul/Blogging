@@ -1,4 +1,4 @@
-const { Schema, model } = require("mongoose");
+const { Schema, model, default: mongoose } = require("mongoose");
 
 const postSchema = new Schema({
   title: {
@@ -7,7 +7,7 @@ const postSchema = new Schema({
     trim: true,
   },
   description: {
-    type: String,
+    type: mongoose.Schema.Types.Mixed,
     required: true,
   },
   imageUrl: {

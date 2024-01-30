@@ -1,15 +1,33 @@
 const express = require("express");
 const app = express();
-const port = 3000;
+require("dotenv").config();
+const passport = require("passport");
+const cookieSession = require("cookie-session");
 const connection = require("./database/connection");
 const { postModel, user } = require("./database/Schema/post");
 const cors = require("cors");
 const { newsSubscription } = require("./database/Schema/post");
 
+
+console.log(process.env["PORT"]);
+
+const port = process.env["PORT"] || 3000;
+
 app.use(express.json());
 app.use(cors());
-connection;
 
+app.use(
+  cookieSession({
+    name: "session",
+    keys: ["gauravBlog"],
+    maxAge: 24 * 60 * 60 * 100,
+  })
+);
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+connection;
 app.post("/post", async (req, res) => {
   try {
     let { title, description, imageUrl } = req.body;
@@ -56,6 +74,18 @@ app.post("/newsSubscribe", async (req, res) => {
   }
 });
 
+app.get("/newsSubscribe", async (req, res) => {
+  try {
+    const subscription = await newsSubscription.find({});
+    res.json({ subscription });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({
+      error: error.message,
+    });
+  }
+});
+
 app.get("/post", async (req, res) => {
   try {
     const detail = await postModel.find({});
@@ -78,9 +108,8 @@ app.post("/signUp", async (req, res) => {
       userFinal.save();
       res.status(200).json({
         message: "User created successfully",
-        details : userFinal
-      })
-
+        htmlContent: content.htmlField,
+      });
     } else {
       res.status(401).json({
         message: "Please fill all the requried fields",
@@ -94,8 +123,7 @@ app.post("/signUp", async (req, res) => {
 
 app.use(function (err, req, res) {
   console.log(err.message);
-  res?.status(500).json({ error: err.message });
-  res.end();
+  res.status(500).json({ error: err.message });
 });
 
 app.listen(port, () => {
