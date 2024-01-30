@@ -111,7 +111,7 @@ app.post("/signUp", async (req, res) => {
         htmlContent: content.htmlField,
       });
     } else {
-      res.status(401).json({
+      res.status(400).json({
         message: "Please fill all the requried fields",
       });
     }
