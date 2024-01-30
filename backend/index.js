@@ -1,13 +1,11 @@
 const express = require("express");
 const app = express();
 require("dotenv").config();
-const passport = require("passport");
 const cookieSession = require("cookie-session");
 const connection = require("./database/connection");
 const { postModel, user } = require("./database/Schema/post");
 const cors = require("cors");
 const { newsSubscription } = require("./database/Schema/post");
-
 
 console.log(process.env["PORT"]);
 
@@ -23,9 +21,6 @@ app.use(
     maxAge: 24 * 60 * 60 * 100,
   })
 );
-
-app.use(passport.initialize());
-app.use(passport.session());
 
 connection;
 app.post("/post", async (req, res) => {
